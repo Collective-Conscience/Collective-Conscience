@@ -1,6 +1,6 @@
 {
   "name": "Collective-Conscience",
-  "app_id": "",
+  "app_id": "c3dc2612",
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}
