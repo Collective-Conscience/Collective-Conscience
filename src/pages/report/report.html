@@ -6,6 +6,116 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
+  <ion-card>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-4>
+          <ion-card-header>
+            <strong>When:</strong>
+          </ion-card-header>
+        </ion-col>
 
+        <ion-col col-7>
+          <ion-card-content>
+            <ion-item>
+              <!-- <ion-label>Date</ion-label> -->
+              <ion-datetime displayFormat="MMM. DD, YYYY" [(ngModel)]="myDate"></ion-datetime>
+            </ion-item>
+            <br>
+            <ion-item>
+              <!-- <ion-label>Time</ion-label> -->
+              <ion-datetime displayFormat="h:mm A" [(ngModel)]="myTime"></ion-datetime>
+            </ion-item>
+          </ion-card-content>
+        </ion-col>
+
+        <ion-col col-1>
+            <ion-icon name="md-create"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </ion-card>
+
+  <ion-card>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-4>
+          <ion-card-header>
+            <strong>Where:</strong>
+          </ion-card-header>
+        </ion-col>
+
+      <ion-col col-7>
+        <ion-card-content>
+          {{myStreet}}
+          <br>
+          {{myCity}}, {{myState}}
+        </ion-card-content>
+      </ion-col>
+
+      <ion-col col-1>
+          <ion-icon name="md-create" (click)="openWhereModal()"></ion-icon>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
+  </ion-card>
+
+  <ion-card>
+    <ion-grid>
+
+        <ion-card-header>
+          <ion-row>
+            <strong>What:</strong>
+          </ion-row>
+          <ion-row>
+            Select all that apply
+          </ion-row>
+        </ion-card-header>
+
+      <ion-card-content>
+        <ion-row>
+          <ion-col col-auto>
+            <button ion-button round outline>Verbal Abuse</button>
+          </ion-col>
+          <ion-col col-auto>
+            <button ion-button round outline>Indecent Exposure</button>
+          </ion-col>
+          <ion-col col-auto>
+            <button ion-button round outline>Inappropriate Touching</button>
+          </ion-col>
+          <ion-col col-auto>
+            <button ion-button round outline>Leering</button>
+          </ion-col>
+          <ion-col col-auto>
+            <button ion-button round outline>Cat Calling</button>
+          </ion-col>
+          <ion-col col-auto>
+            <button ion-button round outline>Stalking</button>
+          </ion-col>
+          <ion-col col-auto>
+            <button ion-button round outline>Racism</button>
+          </ion-col>
+          <ion-col col-auto>
+            <button ion-button round outline>Flashing</button>
+          </ion-col>
+          <ion-col col-auto>
+            <button ion-button round outline>Sexist Remarks</button>
+          </ion-col>
+          <ion-col col-auto>
+            <button ion-button round outline>Sexually Explicit Comments</button>
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+    </ion-grid>
+  </ion-card>
+
+  <!-- <div class="button">
+    <button item-right ion-button color="secondary">Secondary</button>
+  </div> -->
+
+  <button ion-button block color="secondary">Submit</button>
 </ion-content>
