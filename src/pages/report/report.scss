@@ -10,11 +10,31 @@ page-report {
 //     margin-right: -50%;
 //     transform: translate(-50%, -50%);
 // }
+h2{
+  text-align: center;
+}
+.item-inner{
+  border-bottom: none !important;
+}
 
+#closeButton{
+  font-size: 2.2em;
+}
 $datetime-ios-padding-top: 0px;
 $datetime-ios-padding-right: 0px;
 $datetime-ios-padding-left: 0px;
 $datetime-ios-padding-bottom: 0px;
 
+// .selected{
+//   background-color: primary !important;
+//   border: 1px solid primary !important;
+//   color: white !important;
+// }
+//
+// .notSelected{
+//   background-color: white !important;
+//   color: primary !important;
+//   border: 1px solid primary !important;
+// }
 
 }

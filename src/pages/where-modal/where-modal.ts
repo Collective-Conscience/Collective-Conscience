@@ -14,7 +14,11 @@ import { NavController, NavParams, ViewController } from 'ionic-angular';
 })
 export class WhereModalPage {
 
-  public locationForm = {};
+  public locationForm = {
+    street: "",
+    city: "",
+    state: ""
+  };
   public myStreet = "";
   public myCity = "";
   public myState = "";
@@ -32,12 +36,23 @@ export class WhereModalPage {
   closeModal(){
     /*TODO: check when user only puts one input in
     should all inputs be required?*/
-    
-    if (Object.keys(this.locationForm).length === 0){
+
+    // if (Object.keys(this.locationForm).length === 0){
+    //   this.locationForm.street = this.myStreet;
+    //   this.locationForm.city = this.myCity;
+    //   this.locationForm.state = this.myState;
+    // }
+
+    if (this.locationForm.street === ""){
       this.locationForm.street = this.myStreet;
+    }
+    if (this.locationForm.city === ""){
       this.locationForm.city = this.myCity;
+    }
+    if (this.locationForm.state === ""){
       this.locationForm.state = this.myState;
     }
+
     this.viewCtrl.dismiss(this.locationForm);
   }
 

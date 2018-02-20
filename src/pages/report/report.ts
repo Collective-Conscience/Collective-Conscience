@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ModalController } from 'ionic-angular';
+import { App, ViewController, NavController, NavParams, ModalController } from 'ionic-angular';
 import { WhereModalPage } from '../where-modal/where-modal';
+import { HomePage } from '../home/home';
+
 @Component({
   selector: 'page-report',
   templateUrl: 'report.html'
@@ -12,7 +14,11 @@ export class ReportPage {
   public myStreet = "123 Street Rd.";
   public myCity = "City";
   public myState = "State";
-  constructor(private modalController: ModalController, public navCtrl: NavController, public navParams: NavParams) {
+
+  public issues = ['Verbal Abuse','Indecent Exposure','Inappropriate Touching','Leering','Cat Calling','Stalking','Racism', 'Flashing', 'Sexist Remarks', 'Sexually Explicit Comments'];
+  public activeIssue = [];
+
+  constructor(public appCtrl: App, public viewCtrl: ViewController, private modalController: ModalController, public navCtrl: NavController, public navParams: NavParams) {
 
   }
 
@@ -30,4 +36,26 @@ export class ReportPage {
     })
     openWhereModal.present();
   }
+
+  setIssue(id, issue){
+    console.log("ISSUE", issue);
+    console.log("ID", id);
+    if(this.activeIssue.indexOf(issue)!=-1) {
+      //if exist remove it.
+      this.activeIssue.splice(this.activeIssue.indexOf(issue), 1);
+    } else {
+    //if don't add it.
+      this.activeIssue.push(issue);
+    }
+    console.log(this.activeIssue);
+  }
+
+  submitReport(){
+    this.navCtrl.parent.select(0);
+  }
+
+  closeReport(){
+    this.navCtrl.parent.select(0);
+  }
+
 }

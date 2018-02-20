@@ -7,6 +7,10 @@
 </ion-header>
 
 <ion-content>
+  <ion-item>
+      <ion-icon item-start id="closeButton" name="close" (click)="closeReport()"></ion-icon>
+      <h2>Report Street Harassment</h2>
+  </ion-item>
   <ion-card>
     <ion-grid>
       <ion-row>
@@ -16,7 +20,7 @@
           </ion-card-header>
         </ion-col>
 
-        <ion-col col-7>
+        <ion-col col-8>
           <ion-card-content>
             <ion-item>
               <!-- <ion-label>Date</ion-label> -->
@@ -30,9 +34,9 @@
           </ion-card-content>
         </ion-col>
 
-        <ion-col col-1>
+        <!-- <ion-col col-1>
             <ion-icon name="md-create"></ion-icon>
-        </ion-col>
+        </ion-col> -->
       </ion-row>
     </ion-grid>
 
@@ -78,35 +82,8 @@
 
       <ion-card-content>
         <ion-row>
-          <ion-col col-auto>
-            <button ion-button round outline>Verbal Abuse</button>
-          </ion-col>
-          <ion-col col-auto>
-            <button ion-button round outline>Indecent Exposure</button>
-          </ion-col>
-          <ion-col col-auto>
-            <button ion-button round outline>Inappropriate Touching</button>
-          </ion-col>
-          <ion-col col-auto>
-            <button ion-button round outline>Leering</button>
-          </ion-col>
-          <ion-col col-auto>
-            <button ion-button round outline>Cat Calling</button>
-          </ion-col>
-          <ion-col col-auto>
-            <button ion-button round outline>Stalking</button>
-          </ion-col>
-          <ion-col col-auto>
-            <button ion-button round outline>Racism</button>
-          </ion-col>
-          <ion-col col-auto>
-            <button ion-button round outline>Flashing</button>
-          </ion-col>
-          <ion-col col-auto>
-            <button ion-button round outline>Sexist Remarks</button>
-          </ion-col>
-          <ion-col col-auto>
-            <button ion-button round outline>Sexually Explicit Comments</button>
+          <ion-col *ngFor="let issue of issues; let i= index" col-auto>
+            <button ion-button round outline [ngClass]="(activeIssue.indexOf(issue)!= 1)? 'notSelected' : 'selected'" (click)="setIssue(i, issue)" >{{ issue }}</button>
           </ion-col>
         </ion-row>
       </ion-card-content>
@@ -117,5 +94,5 @@
     <button item-right ion-button color="secondary">Secondary</button>
   </div> -->
 
-  <button ion-button block color="secondary">Submit</button>
+  <button ion-button block color="secondary" (click)="submitReport()">Submit</button>
 </ion-content>
