@@ -83,7 +83,7 @@
       <ion-card-content>
         <ion-row>
           <ion-col *ngFor="let issue of issues; let i= index" col-auto>
-            <button ion-button round outline [ngClass]="(activeIssue.indexOf(issue)!= 1)? 'notSelected' : 'selected'" (click)="setIssue(i, issue)" >{{ issue }}</button>
+            <button [ngClass]="(activeIssue.indexOf(issue)!= -1)? 'selected' : 'notSelected'" (click)="setIssue(i, issue)" >{{ issue }}</button>
           </ion-col>
         </ion-row>
       </ion-card-content>

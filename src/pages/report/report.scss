@@ -20,21 +20,31 @@ h2{
 #closeButton{
   font-size: 2.2em;
 }
+
+button.selected{
+  background-color: #488aff;
+  color: white;
+  border: 1px solid #488aff;
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 64px;
+}
+
+button.notSelected{
+  background-color: white;
+  color: #488aff;
+  border: 1px solid #488aff;
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 64px;
+}
+
 $datetime-ios-padding-top: 0px;
 $datetime-ios-padding-right: 0px;
 $datetime-ios-padding-left: 0px;
 $datetime-ios-padding-bottom: 0px;
 
-// .selected{
-//   background-color: primary !important;
-//   border: 1px solid primary !important;
-//   color: white !important;
-// }
-//
-// .notSelected{
-//   background-color: white !important;
-//   color: primary !important;
-//   border: 1px solid primary !important;
-// }
+
+
 
 }
