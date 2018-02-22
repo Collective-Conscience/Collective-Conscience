@@ -9,6 +9,7 @@ import { HomePage } from '../pages/home/home';
 import { ResourcesPage } from '../pages/resources/resources';
 import { TabsPage } from '../pages/tabs/tabs';
 import { WhereModalPage } from '../pages/where-modal/where-modal';
+import { ReviewReportPage } from '../pages/review-report/review-report';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -21,7 +22,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     HomePage,
     ResourcesPage,
     TabsPage,
-    WhereModalPage
+    WhereModalPage,
+    ReviewReportPage
   ],
   imports: [
     BrowserModule,
@@ -35,7 +37,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     HomePage,
     ResourcesPage,
     TabsPage,
-    WhereModalPage
+    WhereModalPage,
+    ReviewReportPage
   ],
   providers: [
     StatusBar,

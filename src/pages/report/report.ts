@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { App, ViewController, NavController, NavParams, ModalController } from 'ionic-angular';
 import { WhereModalPage } from '../where-modal/where-modal';
-import { HomePage } from '../home/home';
+import { ReviewReportPage } from '../review-report/review-report';
 
 @Component({
   selector: 'page-report',
@@ -51,11 +51,24 @@ export class ReportPage {
   }
 
   submitReport(){
-    this.navCtrl.parent.select(0);
+    let reportData = {
+      date: this.myDate,
+      time: this.myTime,
+      street: this.myStreet,
+      city: this.myCity,
+      state: this.myState,
+      activeIssue: this.activeIssue
+    }
+    this.navCtrl.push(ReviewReportPage, reportData);
   }
 
   closeReport(){
     this.navCtrl.parent.select(0);
+  }
+
+  ionViewDidLeave(){
+    console.log("ionViewDidLeave ReportPage");
+    this.activeIssue = [];
   }
 
 }
