@@ -56,6 +56,8 @@ export class ReviewReportPage {
           text: 'VIEW MAP',
           handler: () => {
             console.log('View clicked');
+            this.navCtrl.pop();
+            this.navCtrl.parent.select(2);
           }
         }
       ]
