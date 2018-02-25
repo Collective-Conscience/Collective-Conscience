@@ -84,4 +84,5 @@
     <plugin name="cordova-plugin-flic" spec="^0.6.0">
         <variable name="URL_SCHEME" value="flic20" />
     </plugin>
+    <engine name="ios" spec="4.5.4" />
 </widget>
