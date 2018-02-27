@@ -1,3 +1,53 @@
 page-home {
 
+p{
+  font-family: "Roboto";
+  text-align: center;
+}
+  h1{
+    line-height: normal;
+    font-size: 20px;
+    margin-top: auto;
+    color: 333333;
+    font-family: "Roboto";
+    text-align: center;
+  }
+  h2{
+    line-height: normal;
+    font-size: 10px;
+    margin-top: auto;
+    color: 333333;
+    font-family: "Roboto";
+  }
+  h3{
+    line-height: normal;
+    font-size: 10px;
+    font-weight: bold;
+    margin-top: auto;
+    color: red;
+    font-family: "Roboto";
+  }
+  h4{
+    line-height: normal;
+    font-size: 10px;
+    font-weight: bold;
+    margin-top: auto;
+    color: 333333;
+    font-family: "Roboto";
+  }
+
+ion-img{
+  display: block;
+  margin: auto;
+  min-width: 250px;
+  min-height: 150px;
+  contain: strict;
+}
+
+ion-img img{
+  object-fit: fill;
+  height: 150px;
+  width: 400px;
+}
+
 }
