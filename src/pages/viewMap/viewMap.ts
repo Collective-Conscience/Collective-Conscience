@@ -9,6 +9,7 @@ import {
  MarkerOptions,
  Marker
 } from '@ionic-native/google-maps';
+import { Geolocation } from '@ionic-native/geolocation';
 
 declare var google: any;
 
@@ -20,7 +21,7 @@ export class ViewMapPage {
 
   @ViewChild('map') mapRef: ElementRef;
   map: any;
-  constructor(public navCtrl: NavController, private googleMaps: GoogleMaps) {
+  constructor(public navCtrl: NavController, private googleMaps: GoogleMaps, public geolocation: Geolocation) {
 
   }
 
@@ -31,16 +32,37 @@ export class ViewMapPage {
 
  loadMap() {
 
-   let latLng = new google.maps.LatLng(-34.9290, 138.6010);
+   this.geolocation.getCurrentPosition().then((position) => {
 
-   let mapOptions = {
-     center: latLng,
-     zoom: 15,
-     mapTypeId: google.maps.MapTypeId.ROADMAP
-   }
+      let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
-   this.map = new google.maps.Map(this.mapRef.nativeElement, mapOptions);
+      let mapOptions = {
+        center: latLng,
+        zoom: 15,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      }
 
+      this.map = new google.maps.Map(this.mapRef.nativeElement, mapOptions);
+      this.addMarker();
+    }, (err) => {
+      console.log(err);
+    });
+
+  }
+
+  addMarker(){
+
+    let marker = new google.maps.Marker({
+      map: this.map,
+      animation: google.maps.Animation.DROP,
+      position: this.map.getCenter()
+    });
+
+    // let content = "<h4>Information!</h4>";
+    //
+    // this.addInfoWindow(marker, content);
+
+  }
    // let mapOptions: GoogleMapOptions = {
    //   camera: {
    //     target: {
@@ -77,6 +99,5 @@ export class ViewMapPage {
    //       });
    //
    //   });
- }
 
 }
