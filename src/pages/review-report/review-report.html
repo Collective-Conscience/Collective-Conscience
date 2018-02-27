@@ -1,53 +1,51 @@
+<!--
+  Generated template for the ReviewReportPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
 <ion-header>
+
   <ion-navbar>
-    <ion-title>
-      Report
-    </ion-title>
+    <ion-title>Review Report</ion-title>
   </ion-navbar>
+
 </ion-header>
 
-<ion-content>
-  <ion-item>
-      <ion-icon item-start id="closeButton" name="close" (click)="closeReport()"></ion-icon>
-      <h2>Report Street Harassment</h2>
-  </ion-item>
+
+<ion-content padding>
   <ion-card>
     <ion-grid>
       <ion-row>
-        <ion-col col-4>
+        <ion-col col-auto>
           <ion-card-header>
             <strong>When:</strong>
           </ion-card-header>
         </ion-col>
 
-        <ion-col col-8>
+        <ion-col col-auto>
           <ion-card-content>
             <ion-item>
-              <ion-label><ion-icon name="calendar"></ion-icon></ion-label>
-              <ion-datetime displayFormat="MMM. DD, YYYY" [(ngModel)]="myDate"></ion-datetime>
+              <ion-label style="opacity: 1"><ion-icon name="calendar"></ion-icon></ion-label>
+              <ion-datetime disabled displayFormat="MMM. DD, YYYY" [(ngModel)]="reportData.date"></ion-datetime>
             </ion-item>
             <br>
             <!-- <ion-item>
               <ion-label><ion-icon name="time"></ion-icon></ion-label>
-              <ion-datetime displayFormat="h:mm A" [(ngModel)]="myTime"></ion-datetime>
+              <ion-datetime disabled displayFormat="h:mm A" [(ngModel)]="reportData.time"></ion-datetime>
             </ion-item> -->
             <ion-row>
               <ion-col col-4 style="text-align:center; font-size: 1.3em; padding-left: 0px">
                 <ion-label><ion-icon name="time"></ion-icon></ion-label>
               </ion-col>
               <ion-col col-6>
-                <ion-datetime displayFormat="h:mm A" [(ngModel)]="myTime" style="padding-left:0px; font-size: 1.2em"></ion-datetime>
+                <ion-datetime disabled displayFormat="h:mm A" [(ngModel)]="reportData.time" style="padding-left:0px; font-size: 1.2em"></ion-datetime>
               </ion-col>
             </ion-row>
           </ion-card-content>
         </ion-col>
-
-        <!-- <ion-col col-1>
-            <ion-icon name="md-create"></ion-icon>
-        </ion-col> -->
       </ion-row>
     </ion-grid>
-
   </ion-card>
 
   <ion-card>
@@ -59,33 +57,28 @@
           </ion-card-header>
         </ion-col>
 
-      <ion-col col-7>
+      <ion-col col-8>
         <ion-card-content>
           <ion-row>
             <ion-col col-1>
               <ion-icon name="pin"></ion-icon>
             </ion-col>
             <ion-col col-8>
-              {{myStreet}}
+              {{ reportData.street}}
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col col-1>
             </ion-col>
             <ion-col col-6>
-              {{myCity}}, {{myState}}
+              {{ reportData.city }}, {{ reportData.state}}
             </ion-col>
           </ion-row>
         </ion-card-content>
       </ion-col>
 
-      <ion-col col-1>
-          <ion-icon name="md-create" (click)="openWhereModal()"></ion-icon>
-      </ion-col>
-
     </ion-row>
   </ion-grid>
-
   </ion-card>
 
   <ion-card>
@@ -95,24 +88,27 @@
           <ion-row>
             <strong>What:</strong>
           </ion-row>
-          <ion-row>
-            Select all that apply
-          </ion-row>
         </ion-card-header>
 
       <ion-card-content>
         <ion-row>
-          <ion-col *ngFor="let issue of issues; let i= index" col-auto>
-            <button [ngClass]="(activeIssue.indexOf(issue)!= -1)? 'selected' : 'notSelected'" (click)="setIssue(i, issue)" >{{ issue }}</button>
+          <ion-col *ngFor="let issue of reportData.activeIssue" col-auto>
+            <div class="selected">{{ issue }}</div>
           </ion-col>
         </ion-row>
       </ion-card-content>
     </ion-grid>
   </ion-card>
 
-  <!-- <div class="button">
-    <button item-right ion-button color="secondary">Secondary</button>
-  </div> -->
-
-  <button ion-button block color="secondary" (click)="submitReport()">Submit</button>
+  <h3>Is this correct?</h3>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-6>
+        <button ion-button round outline color="danger" (click)="goBack()">No, Go Back</button>
+      </ion-col>
+      <ion-col col-6>
+        <button ion-button round outline color="secondary" (click)="showConfirm()">Yes, Submit</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

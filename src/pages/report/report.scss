@@ -1,3 +1,50 @@
 page-report {
 
+// .button{
+//   position: relative;
+// }
+// .button button{
+//   position: absolute;
+//     top: 50%;
+//     left: 50%;
+//     margin-right: -50%;
+//     transform: translate(-50%, -50%);
+// }
+h2{
+  text-align: center;
+}
+.item-inner{
+  border-bottom: none !important;
+}
+
+#closeButton{
+  font-size: 2.2em;
+}
+
+button.selected{
+  background-color: #488aff;
+  color: white;
+  border: 1px solid #488aff;
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 64px;
+}
+
+button.notSelected{
+  background-color: white;
+  color: #488aff;
+  border: 1px solid #488aff;
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 64px;
+}
+
+$datetime-ios-padding-top: 0px;
+$datetime-ios-padding-right: 0px;
+$datetime-ios-padding-left: 0px;
+$datetime-ios-padding-bottom: 0px;
+
+
+
+
 }
