@@ -42,14 +42,12 @@
   "cordova-plugin-googlemaps": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-googlemaps"
+      "id": "cordova-plugin-googlemaps@^2.2.5"
     },
     "is_top_level": true,
     "variables": {
-      "API_KEY_FOR_ANDROID": "AIzaSyDQPLOpuguh8odZw8HaU3jE8eIKUwiRROY",
-      "API_KEY_FOR_IOS": "AIzaSyCIYDQArhTk-XihSzO-w-LD8JuoNWJwFRw",
-      "LOCATION_WHEN_IN_USE_DESCRIPTION": "This app wants to get your location while this app runs only.",
-      "LOCATION_ALWAYS_USAGE_DESCRIPTION": "This app wants to get your location always, even this app runs in background."
+      "API_KEY_FOR_ANDROID": "YOUR_ANDROID_API_KEY_IS_HERE",
+      "API_KEY_FOR_IOS": "YOUR_IOS_API_KEY_IS_HERE"
     }
   },
   "com.googlemaps.ios": {
