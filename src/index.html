@@ -17,7 +17,6 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
   <script src="http://maps.google.com/maps/api/js?key=AIzaSyDVByy13T4K8N2gQmcyiwqseiKY9m4tcX0"></script>
-<script type="text/javascript" src="/assets/javascript/flic.js"></script>
   <!-- cordova.js required for cordova apps (remove if not needed) -->
   <script src="cordova.js"></script>
 
@@ -31,6 +30,7 @@
   </script>-->
 
   <link href="build/main.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/assets/css/flic.css">
 
 </head>
 <body>
@@ -47,6 +47,18 @@
 
   <!-- The main bundle js is generated during the build process -->
   <script src="build/main.js"></script>
+    
+    <div class="app">
+        <div id="buttons"></div>
+        <div id="deviceready" style="display: none">
+            <p>Connecting to Flic</p>
+            <p>Flic is Ready</p>
+
+            <button id="myBtn1">Grab Button</button>
+        </div>
+        <br/>
+    </div>
+    <script type="text/javascript" src="/assets/javascript/flic.js"></script>
 
 </body>
 </html>
