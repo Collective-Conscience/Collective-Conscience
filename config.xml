@@ -87,12 +87,12 @@
     <plugin name="cordova-plugin-geolocation" spec="^4.0.1">
         <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="To locate you" />
     </plugin>
-    <config-file overwrite="true" parent="NSLocationWhenInUseUsageDescription" platform="ios" target="*-Info.plist">
-        <string>Allow the app to know your location</string>
-    </config-file>
     <plugin name="cordova-plugin-flic" spec="^0.6.0">
         <variable name="URL_SCHEME" value="flic20" />
     </plugin>
     <plugin name="cordova-plugin-splashscreen" spec="^5.0.2" />
     <plugin name="cordova-plugin-statusbar" spec="^2.4.1" />
+    <config-file overwrite="true" parent="NSLocationWhenInUseUsageDescription" platform="ios" target="*-Info.plist">
+        <string>Allow the app to know your location</string>
+    </config-file>
 </widget>
