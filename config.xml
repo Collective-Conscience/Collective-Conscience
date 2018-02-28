@@ -42,45 +42,6 @@
         <splash density="port-xxxhdpi" src="resources/android/splash/drawable-port-xxxhdpi-screen.png" />
     </platform>
     <platform name="ios">
-        <preference name="com.collectiveconscience.collectiveconscience" />
-        <config-file overwrite="true" parent="NSLocationWhenInUseUsageDescription" platform="ios" target="*-Info.plist">
-            <string>Allow the app to know your location</string>
-        </config-file>
-        <config-file target="*-Info.plist" parent="UIBackgroundModes">
-			<array>
-				<string>bluetooth-central</string>
-			</array>
-		</config-file>
-		<config-file target="*-Info.plist" parent="LSApplicationQueriesSchemes">
-			<array>
-				<string>flic20</string>
-			</array>
-		</config-file>
-		<config-file target="*-Info.plist" parent="CFBundleURLTypes">
-			<array>
-				<dict>
-					<key>CFBundleURLSchemes</key>
-					<array>
-						<string>$URL_SCHEME</string>
-					</array>
-				</dict>
-			</array>
-		</config-file>
-		<config-file target="*-Info.plist" parent="FlicUrlScheme">
-		  <string>$URL_SCHEME</string>
-		</config-file>
-		<config-file target="config.xml" parent="/*">
-			<feature name="Flic">
-				<param name="ios-package" value="Flic"/>
-				<param name="onload" value="true" />
-			</feature>
-		</config-file>
-		<framework src="src/ios/fliclib.framework" custom="true" embed="true" />
-			
-		<source-file src="src/ios/Flic.m" />
-		<header-file src="src/ios/Flic.h" />
-        
-        
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
         <icon height="57" src="resources/ios/icon/icon.png" width="57" />
@@ -120,6 +81,8 @@
     <plugin name="cordova-plugin-device" spec="^2.0.1" />
     <plugin name="cordova-plugin-ionic-webview" spec="^1.1.16" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
+    <plugin name="cordova-plugin-splashscreen" spec="^5.0.2" />
+    <plugin name="cordova-plugin-statusbar" spec="^2.4.1" />
     <plugin name="cordova-plugin-googlemaps" spec="^2.2.5">
         <variable name="API_KEY_FOR_ANDROID" value="YOUR_ANDROID_API_KEY_IS_HERE" />
         <variable name="API_KEY_FOR_IOS" value="YOUR_IOS_API_KEY_IS_HERE" />
@@ -128,9 +91,6 @@
         <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="To locate you" />
     </plugin>
     <plugin name="cordova-plugin-flic" spec="^0.6.0">
-        <variable name="com.collectiveconscience.collectiveconscience" value="flic20" />
+        <variable name="URL_SCHEME" value="flic20" />
     </plugin>
-    <plugin name="cordova-plugin-splashscreen" spec="^5.0.2" />
-    <plugin name="cordova-plugin-statusbar" spec="^2.4.1" />
-
 </widget>
