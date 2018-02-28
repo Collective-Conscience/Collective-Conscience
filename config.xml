@@ -94,4 +94,5 @@
         <variable name="URL_SCHEME" value="flic20" />
     </plugin>
     <plugin name="cordova-plugin-splashscreen" spec="^5.0.2" />
+    <plugin name="cordova-plugin-statusbar" spec="^2.4.1" />
 </widget>
