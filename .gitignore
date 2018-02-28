@@ -19,6 +19,8 @@ npm-debug.log*
 .versions/
 coverage/
 dist/
+platforms/
+plugins/
 node_modules/
 tmp/
 temp/
