@@ -39,16 +39,6 @@
     "is_top_level": true,
     "variables": {}
   },
-  "cordova-plugin-flic": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-flic"
-    },
-    "is_top_level": true,
-    "variables": {
-      "URL_SCHEME": "flic20"
-    }
-  },
   "cordova-plugin-googlemaps": {
     "source": {
       "type": "registry",
