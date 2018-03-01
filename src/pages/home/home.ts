@@ -10,5 +10,9 @@ export class HomePage {
   constructor(public navCtrl: NavController, public viewCtrl: ViewController) {
 
   }
+  
+  goToReport(){
+    this.navCtrl.parent.select(1);
+  }
 
 }

@@ -3,8 +3,15 @@ page-home {
     p{
       font-family: "Roboto";
       text-align: center;
+      font-size: "2";
+      line-height: normal;
     }
-    
+
+    div{
+      line-height: 9px;
+    }
+
+
     h1{
         line-height: normal;
         font-size: 20px;
@@ -12,32 +19,6 @@ page-home {
         color: 333333;
         font-family: "Roboto";
         text-align: center;
-    }
-    
-    h2{
-        line-height: normal;
-        font-size: 10px;
-        margin-top: auto;
-        color: 333333;
-        font-family: "Roboto";
-    }
-    
-    h3{
-        line-height: normal;
-        font-size: 10px;
-        font-weight: bold;
-        margin-top: auto;
-        color: red;
-        font-family: "Roboto";
-    }
-    
-    h4{
-        line-height: normal;
-        font-size: 10px;
-        font-weight: bold;
-        margin-top: auto;
-        color: 333333;
-        font-family: "Roboto";
     }
 
     ion-img{
@@ -53,5 +34,5 @@ page-home {
       height: 150px;
       width: 400px;
     }
- 
+
 }
