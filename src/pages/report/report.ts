@@ -19,7 +19,7 @@ export class ReportPage {
   public myStreet = "Loading";
   public myCity = "Loading";
   public myState = "Loading";
-
+  public myCoord;
 
   public issues = ['Verbal Abuse','Indecent Exposure','Inappropriate Touching','Leering','Cat Calling','Stalking','Racism', 'Flashing', 'Sexist Remarks', 'Sexually Explicit Comments'];
   public activeIssue = [];
@@ -28,7 +28,7 @@ export class ReportPage {
     this.platform.ready().then(() => {
       this.geolocation.getCurrentPosition().then((position) => {
         let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-
+        this.myCoord = latLng;
         this.setAddress(latLng).then(results => {
           console.log("HERE", results);
           this.myStreet = results.myStreet;
@@ -70,7 +70,10 @@ export class ReportPage {
       city: this.myCity,
       state: this.myState
     }
+
     let openWhereModal = this.modalController.create(WhereModalPage, locationStateFromReportPage);
+
+    /**TODO: Need to check if user input is actual place **/
     openWhereModal.onDidDismiss((locationState) =>{
       this.myStreet = locationState.street;
       this.myCity = locationState.city;
@@ -99,6 +102,7 @@ export class ReportPage {
       street: this.myStreet,
       city: this.myCity,
       state: this.myState,
+      coord: this.myCoord,
       activeIssue: this.activeIssue
     }
     this.navCtrl.push(ReviewReportPage, reportData);
