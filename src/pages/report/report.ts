@@ -1,7 +1,11 @@
 import { Component } from '@angular/core';
-import { App, ViewController, NavController, NavParams, ModalController } from 'ionic-angular';
+import { App, ViewController, NavController, NavParams, ModalController, Platform } from 'ionic-angular';
 import { WhereModalPage } from '../where-modal/where-modal';
 import { ReviewReportPage } from '../review-report/review-report';
+import { Geolocation } from '@ionic-native/geolocation';
+import { GoogleMaps } from '@ionic-native/google-maps';
+
+declare var google: any;
 
 @Component({
   selector: 'page-report',
@@ -11,15 +15,53 @@ export class ReportPage {
 
   myDate: String = (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().slice(0,-1);
   myTime: String = (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().slice(0,-1);
-  public myStreet = "123 Street Rd.";
-  public myCity = "City";
-  public myState = "State";
+
+  public myStreet = "Loading";
+  public myCity = "Loading";
+  public myState = "Loading";
+
 
   public issues = ['Verbal Abuse','Indecent Exposure','Inappropriate Touching','Leering','Cat Calling','Stalking','Racism', 'Flashing', 'Sexist Remarks', 'Sexually Explicit Comments'];
   public activeIssue = [];
 
-  constructor(public appCtrl: App, public viewCtrl: ViewController, private modalController: ModalController, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public appCtrl: App, public viewCtrl: ViewController, private modalController: ModalController, public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps, public geolocation: Geolocation, private platform: Platform) {
+    this.platform.ready().then(() => {
+      this.geolocation.getCurrentPosition().then((position) => {
+        let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
+        this.setAddress(latLng).then(results => {
+          console.log("HERE", results);
+          this.myStreet = results.myStreet;
+          this.myCity = results.myCity;
+          this.myState = results.myState;
+      });
+
+    });
+  });
+}
+
+  setAddress(latLng: any): Promise<any>{
+      return new Promise((resolve, result) => {
+        var geocoder = new google.maps.Geocoder;
+        geocoder.geocode({'location': latLng}, function(results, status){
+          if (status === 'OK'){
+            if (results[0]){
+              let address = {
+                myStreet: results[0].address_components[0].long_name + " " + results[0].address_components[1].short_name,
+                myCity: results[0].address_components[2].long_name,
+                myState: results[0].address_components[4].short_name
+              }
+              resolve(address);
+            }else {
+              resolve('No results found');
+              // window.alert('No results found');
+            }
+          }else {
+            resolve('Geocoder failed due to: ' + status);
+            // window.alert('Geocoder failed due to: ' + status);
+          }
+      });
+    });
   }
 
   openWhereModal(){
