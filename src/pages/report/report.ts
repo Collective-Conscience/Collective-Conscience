@@ -30,7 +30,6 @@ export class ReportPage {
         let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
         this.myCoord = latLng;
         this.setAddress(latLng).then(results => {
-          console.log("HERE", results);
           this.myStreet = results.myStreet;
           this.myCity = results.myCity;
           this.myState = results.myState;
@@ -68,7 +67,8 @@ export class ReportPage {
     let locationStateFromReportPage = {
       street: this.myStreet,
       city: this.myCity,
-      state: this.myState
+      state: this.myState,
+      coord: this.myCoord
     }
 
     let openWhereModal = this.modalController.create(WhereModalPage, locationStateFromReportPage);
@@ -78,6 +78,7 @@ export class ReportPage {
       this.myStreet = locationState.street;
       this.myCity = locationState.city;
       this.myState = locationState.state;
+      this.myCoord = locationState.coord;
     })
     openWhereModal.present();
   }

@@ -8,4 +8,12 @@ page-where-modal {
   ion-label, .label{
     margin-left: 10px;
   }
+
+  .invalid-address{
+    h3{
+      color: red;
+    }
+    display: none;
+
+  }
 }

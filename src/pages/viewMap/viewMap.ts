@@ -33,6 +33,8 @@ export class ViewMapPage {
  }
 
   loadMap() {
+      console.log("MAP PAGE LAT", this.reportData.coord.lat());
+      console.log("MAP PAGE LNG", this.reportData.coord.lng());
       let mapOptions = {
         center: this.reportData.coord,
         zoom: 15,

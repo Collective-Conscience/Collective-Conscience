@@ -57,7 +57,7 @@ export class ReviewReportPage {
         {
           text: 'VIEW MAP',
           handler: () => {
-            console.log('View clicked');
+            console.log('View Map clicked', this.reportData);
             this.data.paramData = this.reportData;
             this.navCtrl.pop();
             this.navCtrl.parent.select(2);
