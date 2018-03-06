@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ToastController } from 'ionic-angular';
 import {
  GoogleMaps,
  GoogleMap,
@@ -9,7 +9,7 @@ import {
  MarkerOptions,
  Marker
 } from '@ionic-native/google-maps';
-import { Geolocation } from '@ionic-native/geolocation';
+import { DataProvider } from "../../providers/data/data";
 
 declare var google: any;
 
@@ -19,10 +19,12 @@ declare var google: any;
 })
 export class ViewMapPage {
 
+  public reportData: any;
   @ViewChild('map') mapRef: ElementRef;
   map: any;
-  constructor(public navCtrl: NavController, private googleMaps: GoogleMaps, public geolocation: Geolocation) {
 
+  constructor(public navCtrl: NavController, private googleMaps: GoogleMaps, public data: DataProvider, private toastCtrl: ToastController) {
+    this.reportData = this.data.paramData;
   }
 
   ionViewDidLoad() {
@@ -30,23 +32,17 @@ export class ViewMapPage {
     this.loadMap();
  }
 
- loadMap() {
-
-   this.geolocation.getCurrentPosition().then((position) => {
-
-      let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-
+  loadMap() {
+      console.log("MAP PAGE LAT", this.reportData.coord.lat());
+      console.log("MAP PAGE LNG", this.reportData.coord.lng());
       let mapOptions = {
-        center: latLng,
+        center: this.reportData.coord,
         zoom: 15,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       }
 
       this.map = new google.maps.Map(this.mapRef.nativeElement, mapOptions);
       this.addMarker();
-    }, (err) => {
-      console.log(err);
-    });
 
   }
 
@@ -58,46 +54,29 @@ export class ViewMapPage {
       position: this.map.getCenter()
     });
 
-    // let content = "<h4>Information!</h4>";
-    //
-    // this.addInfoWindow(marker, content);
+    this.addInfoWindow(marker);
 
   }
-   // let mapOptions: GoogleMapOptions = {
-   //   camera: {
-   //     target: {
-   //       lat: 43.0741904,
-   //       lng: -89.3809802
-   //     },
-   //     zoom: 18,
-   //     tilt: 30
-   //   }
-   // };
-   //
-   // this.map = new google.maps.Map(this.mapRef.navtiveElement, mapOptions);
-   //
-   // // Wait the MAP_READY before using any methods.
-   // this.map.one(GoogleMapsEvent.MAP_READY)
-   //   .then(() => {
-   //     console.log('Map is ready!');
-   //
-   //     // Now you can use all methods safely.
-   //     this.map.addMarker({
-   //         title: 'Ionic',
-   //         icon: 'blue',
-   //         animation: 'DROP',
-   //         position: {
-   //           lat: 43.0741904,
-   //           lng: -89.3809802
-   //         }
-   //       })
-   //       .then(marker => {
-   //         marker.on(GoogleMapsEvent.MARKER_CLICK)
-   //           .subscribe(() => {
-   //             alert('clicked');
-   //           });
-   //       });
-   //
-   //   });
+
+  addInfoWindow(marker){
+
+    google.maps.event.addListener(marker, 'click', () => {
+      let toast = this.toastCtrl.create({
+         message: 'When: ' + this.reportData.date + '\n \n' +
+         'Where: ' + this.reportData.street + ' ' + this.reportData.city +
+         ', ' + this.reportData.state + '\n \n' + 'What: ' + this.reportData.activeIssue,
+         position: 'bottom',
+         showCloseButton: true,
+         dismissOnPageChange: true,
+       });
+
+      toast.onDidDismiss(() => {
+        console.log('Dismissed toast');
+      });
+
+      toast.present();
+    });
+
+}
 
 }

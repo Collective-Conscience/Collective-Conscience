@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
-
+import { DataProvider } from "../../providers/data/data";
 /**
  * Generated class for the ReviewReportPage page.
  *
@@ -20,15 +20,17 @@ export class ReviewReportPage {
     street: "",
     city: "",
     state: "",
+    coord: "",
     activeIssue: []
   };
 
-  constructor(public alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams, public data: DataProvider) {
     this.reportData.date = this.navParams.get("date");
     this.reportData.time = this.navParams.get("time");
     this.reportData.street = this.navParams.get("street");
     this.reportData.city = this.navParams.get("city");
     this.reportData.state = this.navParams.get("state");
+    this.reportData.coord = this.navParams.get("coord");
     this.reportData.activeIssue = this.navParams.get("activeIssue");
   }
 
@@ -55,7 +57,8 @@ export class ReviewReportPage {
         {
           text: 'VIEW MAP',
           handler: () => {
-            console.log('View clicked');
+            console.log('View Map clicked', this.reportData);
+            this.data.paramData = this.reportData;
             this.navCtrl.pop();
             this.navCtrl.parent.select(2);
           }

@@ -71,7 +71,7 @@
   "cordova-plugin-flic": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-flic"
+      "id": "cordova-plugin-flic@^0.6.0"
     },
     "is_top_level": true,
     "variables": {
@@ -81,9 +81,17 @@
   "cordova-plugin-statusbar": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-statusbar@2.4.1"
+      "id": "cordova-plugin-statusbar@^2.4.1"
     },
     "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-add-swift-support": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-add-swift-support@1.7.1"
+    },
+    "is_top_level": false,
     "variables": {}
   }
 }

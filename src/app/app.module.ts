@@ -23,6 +23,7 @@ import {
  Marker
 } from '@ionic-native/google-maps';
 import { Geolocation } from '@ionic-native/geolocation';
+import { DataProvider } from '../providers/data/data';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { Geolocation } from '@ionic-native/geolocation';
     SplashScreen,
     GoogleMaps,
     Geolocation,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    DataProvider
   ]
 })
 export class AppModule {}
