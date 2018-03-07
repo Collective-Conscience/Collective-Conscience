@@ -99,7 +99,8 @@ export class WhereModalPage {
         this.viewCtrl.dismiss(this.locationForm);
       }else{
         /** Display invalid error **/
-        invalidAddress.style.display = "block";
+        console.log("INVALID ADDRESS");
+        // invalidAddress.style.display = "block";
       }
     });
 
