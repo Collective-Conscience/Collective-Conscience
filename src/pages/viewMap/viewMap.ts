@@ -11,7 +11,7 @@ import {
 } from '@ionic-native/google-maps';
 import { DataProvider } from "../../providers/data/data";
 import { CurrentCoordProvider } from "../../providers/current-coord/current-coord";
-import { AngularFireDatabase, AngularFireListObservable } from 'angularfire2/database';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 declare var google: any;
 
@@ -21,7 +21,7 @@ declare var google: any;
 })
 export class ViewMapPage {
 
-  addressMarkers: AngularFireListObservable<any>;
+  // addressMarkers: AngularFireListObservable<any>;
   public reportData: any;
   @ViewChild('map') mapRef: ElementRef;
   map: any;
@@ -40,8 +40,9 @@ export class ViewMapPage {
     /**TODO: FIX SO THAT IF MAP PAGE VISIT FIRST STILL DROPS PIN
     GET CURRENT GEOLOCATION NOT FROM OTHER PAGE **/
     this.currentCoord.getCoord().then(results => {
+      console.log("RESULTS", results);
       let mapOptions = {
-          center: results,
+          center: {lat: results.lat, lng: results.lng},
           zoom: 15,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         }

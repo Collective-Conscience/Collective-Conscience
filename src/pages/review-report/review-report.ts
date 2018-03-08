@@ -23,7 +23,8 @@ export class ReviewReportPage {
     street: "",
     city: "",
     state: "",
-    coord: "",
+    lat: "",
+    lng: "",
     activeIssue: []
   };
 
@@ -33,7 +34,9 @@ export class ReviewReportPage {
     this.reportData.street = this.navParams.get("street");
     this.reportData.city = this.navParams.get("city");
     this.reportData.state = this.navParams.get("state");
-    this.reportData.coord = this.navParams.get("coord");
+    this.reportData.lat = this.navParams.get("lat");
+    this.reportData.lng = this.navParams.get("lng");
+    // this.reportData.coord = this.navParams.get("coord");
     this.reportData.activeIssue = this.navParams.get("activeIssue");
     // this.addressMarkers = afDatabase.list('/addressMarkers').valueChanges();
   }
@@ -54,8 +57,8 @@ export class ReviewReportPage {
       street: this.reportData.street,
       city: this.reportData.city,
       state: this.reportData.state,
-      lat: this.reportData.coord.lat(),
-      lng: this.reportData.coord.lng(),
+      lat: this.reportData.lat,
+      lng: this.reportData.lng,
       activeIssue: this.reportData.activeIssue
     });
 

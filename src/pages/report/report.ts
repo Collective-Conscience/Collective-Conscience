@@ -27,9 +27,10 @@ export class ReportPage {
 
   constructor(public appCtrl: App, public viewCtrl: ViewController, private modalController: ModalController, public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps, public geolocation: Geolocation, private platform: Platform, public currentCoord: CurrentCoordProvider) {
     this.platform.ready().then(() => {
-        this.currentCoord.getCoord().then(results => {
-          this.myCoord = results;
-          this.setAddress(results).then(results => {
+        this.currentCoord.getCoord().then(locationResults => {
+          this.myCoord = new google.maps.LatLng(locationResults.lat, locationResults.lng);
+          console.log(this.myCoord);
+          this.setAddress(this.myCoord).then(results => {
             this.myStreet = results.myStreet;
             this.myCity = results.myCity;
             this.myState = results.myState;
@@ -105,7 +106,8 @@ export class ReportPage {
       street: this.myStreet,
       city: this.myCity,
       state: this.myState,
-      coord: this.myCoord,
+      lat: this.myCoord.lat(),
+      lng: this.myCoord.lng(),
       activeIssue: this.activeIssue
     }
     this.navCtrl.push(ReviewReportPage, reportData);

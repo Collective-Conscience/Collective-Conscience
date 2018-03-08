@@ -21,7 +21,11 @@ export class CurrentCoordProvider {
   getCoord(): Promise<any>{
     return new Promise((resolve, result) => {
       this.geolocation.getCurrentPosition().then((position) => {
-        let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        var coord = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        let latLng = {
+          lat: coord.lat(),
+          lng: coord.lng()
+        }
         resolve(latLng);
       });
 
