@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { App, ViewController, NavController, NavParams, ModalController, Platform } from 'ionic-angular';
+import { CurrentCoordProvider } from "../../providers/current-coord/current-coord";
 import { WhereModalPage } from '../where-modal/where-modal';
 import { ReviewReportPage } from '../review-report/review-report';
 import { Geolocation } from '@ionic-native/geolocation';
@@ -24,18 +25,19 @@ export class ReportPage {
   public issues = ['Verbal Abuse','Indecent Exposure','Inappropriate Touching','Leering','Cat Calling','Stalking','Racism', 'Flashing', 'Sexist Remarks', 'Sexually Explicit Comments'];
   public activeIssue = [];
 
-  constructor(public appCtrl: App, public viewCtrl: ViewController, private modalController: ModalController, public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps, public geolocation: Geolocation, private platform: Platform) {
+  constructor(public appCtrl: App, public viewCtrl: ViewController, private modalController: ModalController, public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps, public geolocation: Geolocation, private platform: Platform, public currentCoord: CurrentCoordProvider) {
     this.platform.ready().then(() => {
-      this.geolocation.getCurrentPosition().then((position) => {
-        let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-        this.myCoord = latLng;
-        this.setAddress(latLng).then(results => {
-          this.myStreet = results.myStreet;
-          this.myCity = results.myCity;
-          this.myState = results.myState;
+        this.currentCoord.getCoord().then(results => {
+          this.myCoord = results;
+          this.setAddress(results).then(results => {
+            this.myStreet = results.myStreet;
+            this.myCity = results.myCity;
+            this.myState = results.myState;
+          });
       });
 
-    });
+
+    // });
   });
 }
 

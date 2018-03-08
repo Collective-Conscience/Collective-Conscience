@@ -25,6 +25,21 @@ import {
 import { Geolocation } from '@ionic-native/geolocation';
 import { DataProvider } from '../providers/data/data';
 
+// Import the AF2 Module
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { CurrentCoordProvider } from '../providers/current-coord/current-coord';
+
+// AF2 Settings
+export const firebaseConfig = {
+  apiKey: "AIzaSyBt3ni-ObaddY8UAMYjLXGVTVTqE4767J8",
+  authDomain: "collective-consc-1519539441531.firebaseapp.com",
+  databaseURL: "https://collective-consc-1519539441531.firebaseio.com",
+  projectId: "collective-consc-1519539441531",
+  storageBucket: "",
+  messagingSenderId: "205147151561"
+};
+
 @NgModule({
   declarations: [
     MyApp,
@@ -38,7 +53,9 @@ import { DataProvider } from '../providers/data/data';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -57,7 +74,8 @@ import { DataProvider } from '../providers/data/data';
     GoogleMaps,
     Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    DataProvider
+    DataProvider,
+    CurrentCoordProvider
   ]
 })
 export class AppModule {}
