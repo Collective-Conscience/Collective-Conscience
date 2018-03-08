@@ -10,6 +10,7 @@ import {
  Marker
 } from '@ionic-native/google-maps';
 import { DataProvider } from "../../providers/data/data";
+import { CurrentCoordProvider } from "../../providers/current-coord/current-coord";
 import { AngularFireDatabase, AngularFireListObservable } from 'angularfire2/database';
 
 declare var google: any;
@@ -25,7 +26,7 @@ export class ViewMapPage {
   @ViewChild('map') mapRef: ElementRef;
   map: any;
 
-  constructor(public navCtrl: NavController, private googleMaps: GoogleMaps, public data: DataProvider, private toastCtrl: ToastController, public afDatabase: AngularFireDatabase) {
+  constructor(public navCtrl: NavController, private googleMaps: GoogleMaps, public data: DataProvider, private toastCtrl: ToastController, public afDatabase: AngularFireDatabase, public currentCoord: CurrentCoordProvider) {
     this.reportData = this.data.paramData;
     // this.addressMarkers = this.afDatabase.list('/addressMarkers').valueChanges();
   }
@@ -38,16 +39,18 @@ export class ViewMapPage {
   loadMap() {
     /**TODO: FIX SO THAT IF MAP PAGE VISIT FIRST STILL DROPS PIN
     GET CURRENT GEOLOCATION NOT FROM OTHER PAGE **/
-      console.log("MAP PAGE LAT", this.reportData.coord.lat());
-      console.log("MAP PAGE LNG", this.reportData.coord.lng());
+    this.currentCoord.getCoord().then(results => {
       let mapOptions = {
-        center: this.reportData.coord,
-        zoom: 15,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-      }
+          center: results,
+          zoom: 15,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
 
-      this.map = new google.maps.Map(this.mapRef.nativeElement, mapOptions);
-      this.addMarker();
+        this.map = new google.maps.Map(this.mapRef.nativeElement, mapOptions);
+        this.addMarker();
+    })
+
+
 
   }
 

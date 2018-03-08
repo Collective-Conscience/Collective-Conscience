@@ -28,6 +28,7 @@ import { DataProvider } from '../providers/data/data';
 // Import the AF2 Module
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { CurrentCoordProvider } from '../providers/current-coord/current-coord';
 
 // AF2 Settings
 export const firebaseConfig = {
@@ -73,7 +74,8 @@ export const firebaseConfig = {
     GoogleMaps,
     Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    DataProvider
+    DataProvider,
+    CurrentCoordProvider
   ]
 })
 export class AppModule {}
