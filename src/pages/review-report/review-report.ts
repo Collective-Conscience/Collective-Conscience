@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { DataProvider } from "../../providers/data/data";
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+
 /**
  * Generated class for the ReviewReportPage page.
  *
@@ -14,6 +16,7 @@ import { DataProvider } from "../../providers/data/data";
 })
 export class ReviewReportPage {
 
+
   public reportData = {
     date: "",
     time: "",
@@ -24,7 +27,7 @@ export class ReviewReportPage {
     activeIssue: []
   };
 
-  constructor(public alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams, public data: DataProvider) {
+  constructor(public alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams, public data: DataProvider, public afDatabase: AngularFireDatabase) {
     this.reportData.date = this.navParams.get("date");
     this.reportData.time = this.navParams.get("time");
     this.reportData.street = this.navParams.get("street");
@@ -32,6 +35,7 @@ export class ReviewReportPage {
     this.reportData.state = this.navParams.get("state");
     this.reportData.coord = this.navParams.get("coord");
     this.reportData.activeIssue = this.navParams.get("activeIssue");
+    // this.addressMarkers = afDatabase.list('/addressMarkers').valueChanges();
   }
 
   ionViewDidLoad() {
@@ -42,6 +46,19 @@ export class ReviewReportPage {
     this.navCtrl.pop();
   }
   showConfirm() {
+    const newMarkerRef = this.afDatabase.list('/addressMarkers').push({});
+    newMarkerRef.set({
+      id: newMarkerRef.key,
+      date: this.reportData.date,
+      time: this.reportData.time,
+      street: this.reportData.street,
+      city: this.reportData.city,
+      state: this.reportData.state,
+      lat: this.reportData.coord.lat(),
+      lng: this.reportData.coord.lng(),
+      activeIssue: this.reportData.activeIssue
+    });
+
     let confirm = this.alertCtrl.create({
       title: 'Confirmation',
       message: 'THANK YOU FOR TAKING A STAND AGAINST STREET HARASSMENT',
