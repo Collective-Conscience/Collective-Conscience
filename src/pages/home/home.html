@@ -11,19 +11,21 @@
 
 
 <ion-content>
-    <ion-img src="assets/imgs/heroImg.jpg"></ion-img>
-    <p id="imagineAWorld">
-      Imagine a world where both men <em>and women</em> can walk down the street <em>without fear of sexual harassment</em>.
-    </p>
-    <p id="helpUsCreate">
-      <span class="bold">Help us create a crowdsourced map</span> to show the world that <span class="bold">public sexual harassment happens way too often.</span>
-    </p>
-    <p id="needsToStop">
-      Street harassment needs to <span class="boldRedLarge">stop</span>. 
-    </p>
-    <p id="takeAStand">
-      Take a stand and report any incidents of sexual harassment <span class="boldRedLarge">now</span>.
-    </p>
+    <ion-img id="heroImg" src="assets/imgs/heroImg.png"></ion-img>
+    <div id="mainContent">
+        <p id="imagineAWorld">
+          Imagine a world where both men <em>and women</em> can walk down the street <em>without fear of sexual harassment</em>.
+        </p>
+        <p id="helpUsCreate">
+          <span class="bold">Help us create a crowdsourced map</span> to show the world that <span class="bold">public sexual harassment happens way too often.</span>
+        </p>
+        <p id="needsToStop">
+          Street harassment needs to <span class="boldRedLarge">stop</span>. 
+        </p>
+        <p id="takeAStand">
+          Take a stand and report any incidents of sexual harassment <span class="boldRedLarge">now</span>.
+        </p>
 
-<button ion-button block color="Secondary" (click)="goToReport()">Report now</button>
+        <button ion-button block color="Secondary" (click)="goToReport()">Report now</button> 
+    </div>
 </ion-content>
