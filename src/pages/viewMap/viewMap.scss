@@ -1,5 +1,17 @@
 page-viewMap {
 
+  #title{
+    text-align: center;
+    font-weight: bold;
+    font-family: "Roboto";
+    font-size: 20px;
+  }
+  #logo{
+    margin-top: 8px;
+    height: 70px;
+    max-height: 50px;
+  }
+  
   div.scroll-content, div.fixed-content {
        margin-bottom: 25px !important;
      }
