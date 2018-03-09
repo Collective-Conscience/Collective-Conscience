@@ -6,9 +6,25 @@ page-home {
       font-size: "2";
       line-height: normal;
     }
+    #title{
+      text-align: center;
+      font-weight: bold;
+      font-family: "Roboto";
+      font-size: 20px;
+    }
+    #logo{
+      margin-top: 8px;
+      height: 70px;
+      max-height: 50px;
+    }
 
     div{
       line-height: 9px;
+    }
+
+    .toolbar-title-ios{
+      line-height: 20px;
+      width: 100%;
     }
 
 

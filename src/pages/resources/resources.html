@@ -1,11 +1,25 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
-      Resources
-    </ion-title>
+    <!-- <ion-title> -->
+      <div id="title">
+      <img id= "logo" style="vertical-align:middle" src="assets/imgs/logo.png">
+      <span>Collective Conscience</span>
+    </div>
+    <!-- </ion-title> -->
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+<h1> Resources </h1>
+
+<ion-list>
+  <ion-item *ngFor="let d of diseases; let i=index" text-wrap (click)="toggleGroup(i)" [ngClass]="{active: isGroupShown(i)}">
+    <h2>
+      {{d.title}}
+      <ion-icon color="success" item-right [name]="isGroupShown(i) ? 'remove' : 'add'"></ion-icon>
+    </h2>
+    <div *ngIf="isGroupShown(i)" [innerHTML]= "d.description"></div>
+  </ion-item>
+</ion-list>
 
 </ion-content>
