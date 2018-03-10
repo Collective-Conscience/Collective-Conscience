@@ -2,46 +2,30 @@
   <ion-navbar>
     <!-- <ion-title> -->
       <div id="title">
-      <img id= "logo" style="vertical-align:middle" src="assets/imgs/logo.png">
-      <span>Collective Conscience</span>
-    </div>
+        <img id= "logo" style="vertical-align:middle" src="assets/imgs/logo.png">
+        <span>Collective Conscience</span>
+     </div>
     <!-- </ion-title> -->
   </ion-navbar>
 </ion-header>
 
 
-<ion-content padding>
-    <ion-img src="assets/imgs/heroImage.png"></ion-img>
-    <p>
-      <font color = "red"><b>65% of women</b></font> have experienced sexual
-      harasment in public places. Street
-      harrasment is <b> a detriment to gender equality</b>,
-      and can make people feel unsafe in their own neighborhods.
-    </p>
-<div>
-      <font color = "turquoise"><b>&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;catcalls</b></font>
-      <font size="1"><b>sexist remarks</b></font><br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;
-      <font color = "orange" size ="1"><b> homophobic slurs</b></font>
-      <font color = "orange" indent = "6em"><b> flashing</b></font><br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;
-      <font color = "turquoise"><b> groping</b></font>
-      <font size="1"><b>assault</b></font>
-      <font><b>leering</b></font><br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <font color = "orange" size ="1"><b> stalking </b></font>
-      <font color = "turquoise" size="1"><b> sexually explicit comments</b></font>
-</div>
-<p>
-  Street harrasment needs to <font color="red"><b>stop</b></font>
-</p>
-<button ion-button block color="Secondary" (click)="goToReport()">Report now</button>
+<ion-content>
+    <ion-img id="heroImg" src="assets/imgs/heroImg.png"></ion-img>
+    <div id="mainContent">
+        <p id="imagineAWorld">
+          Imagine a world where both men <em>and women</em> can walk down the street <em>without fear of sexual harassment</em>.
+        </p>
+        <p id="helpUsCreate">
+          <span class="bold">Help us create a crowdsourced map</span> to show the world that <span class="bold">public sexual harassment happens way too often.</span>
+        </p>
+        <p id="needsToStop">
+          Street harassment needs to <span class="boldRedLarge">stop</span>. 
+        </p>
+        <p id="takeAStand">
+          Take a stand and report any incidents of sexual harassment <span class="boldRedLarge">now</span>.
+        </p>
+
+        <button ion-button block color="Secondary" (click)="goToReport()">Report now</button> 
+    </div>
 </ion-content>
