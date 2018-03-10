@@ -64,7 +64,7 @@ export class ReviewReportPage {
 
     let confirm = this.alertCtrl.create({
       title: 'Confirmation',
-      message: 'THANK YOU FOR TAKING A STAND AGAINST STREET HARASSMENT',
+      message: 'Thank you for taking a stand against street harassment',
       buttons: [
         {
           text: 'DONE',

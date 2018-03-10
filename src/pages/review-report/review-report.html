@@ -104,10 +104,10 @@
   <ion-grid>
     <ion-row>
       <ion-col col-6 id="goBackButton">
-        <button ion-button round outline color="danger" (click)="goBack()">No, Go Back</button>
+        <button ion-button round outline (click)="goBack()">No, Go Back</button>
       </ion-col>
-      <ion-col col-6>
-        <button ion-button round outline color="secondary" (click)="showConfirm()">Yes, Submit</button>
+      <ion-col col-6 id="submitButton">
+        <button ion-button round outline (click)="showConfirm()">Yes, Submit</button>
       </ion-col>
     </ion-row>
   </ion-grid>
