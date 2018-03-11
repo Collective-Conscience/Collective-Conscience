@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { DataProvider } from "../../providers/data/data";
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 /**
  * Generated class for the ReviewReportPage page.
@@ -64,7 +64,7 @@ export class ReviewReportPage {
 
     let confirm = this.alertCtrl.create({
       title: 'Confirmation',
-      message: 'THANK YOU FOR TAKING A STAND AGAINST STREET HARASSMENT',
+      message: 'Thank you for taking a stand against street harassment',
       buttons: [
         {
           text: 'DONE',

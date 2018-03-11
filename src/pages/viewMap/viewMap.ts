@@ -1,14 +1,6 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController, ToastController } from 'ionic-angular';
-import {
- GoogleMaps,
- GoogleMap,
- GoogleMapsEvent,
- GoogleMapOptions,
- CameraPosition,
- MarkerOptions,
- Marker
-} from '@ionic-native/google-maps';
+import { GoogleMaps } from '@ionic-native/google-maps';
 import { DataProvider } from "../../providers/data/data";
 import { CurrentCoordProvider } from "../../providers/current-coord/current-coord";
 import { AngularFireDatabase } from 'angularfire2/database';
@@ -26,7 +18,7 @@ export class ViewMapPage {
   @ViewChild('map') mapRef: ElementRef;
   map: any;
 
-  constructor(public navCtrl: NavController, private googleMaps: GoogleMaps, public data: DataProvider, private toastCtrl: ToastController, public afDatabase: AngularFireDatabase, public currentCoord: CurrentCoordProvider) {
+  constructor(public navCtrl: NavController, public data: DataProvider, private toastCtrl: ToastController, public afDatabase: AngularFireDatabase, public currentCoord: CurrentCoordProvider) {
     this.reportData = this.data.paramData;
     // this.addressMarkers = this.afDatabase.list('/addressMarkers').valueChanges();
   }

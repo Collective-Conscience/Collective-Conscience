@@ -10,6 +10,9 @@ page-report {
 //     margin-right: -50%;
 //     transform: translate(-50%, -50%);
 // }
+
+font-family: Roboto, Helvetica, Arial, sans-serif;
+
 #title{
   text-align: center;
   font-weight: bold;
@@ -34,9 +37,9 @@ h2{
 }
 
 button.selected{
-  background-color: #488aff;
+  background-color: #227D96;
   color: white;
-  border: 1px solid #488aff;
+  border: 1px solid #227D96;
   padding: 10px;
   font-size: 15px;
   border-radius: 64px;
@@ -44,11 +47,15 @@ button.selected{
 
 button.notSelected{
   background-color: white;
-  color: #488aff;
-  border: 1px solid #488aff;
+  color: #227D96;
+  border: 1px solid #227D96;
   padding: 10px;
   font-size: 15px;
   border-radius: 64px;
+}
+
+#submitButton{
+  background-color: #227D96;
 }
 
 $datetime-ios-padding-top: 0px;
