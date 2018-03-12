@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { App, ViewController, NavController, NavParams, ModalController, Platform } from 'ionic-angular';
+import { App, ViewController, NavController, NavParams, ModalController, Platform, AlertController } from 'ionic-angular';
 import { CurrentCoordProvider } from "../../providers/current-coord/current-coord";
 import { WhereModalPage } from '../where-modal/where-modal';
 import { ReviewReportPage } from '../review-report/review-report';
@@ -22,14 +22,13 @@ export class ReportPage {
   public myState = "Loading";
   public myCoord;
 
-  public issues = ['Verbal Abuse','Indecent Exposure','Inappropriate Touching','Leering','Cat Calling','Stalking','Racism', 'Flashing', 'Sexist Remarks', 'Sexually Explicit Comments'];
+  public issues = ['Verbal Abuse','Indecent Exposure','Inappropriate Touching','Leering','Cat Calling','Stalking','Racism', 'Flashing', 'Sexist Remarks', 'Sexually Explicit Comments', 'Other'];
   public activeIssue = [];
 
-  constructor(public appCtrl: App, public viewCtrl: ViewController, private modalController: ModalController, public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps, public geolocation: Geolocation, private platform: Platform, public currentCoord: CurrentCoordProvider) {
+  constructor(public appCtrl: App, public viewCtrl: ViewController, private modalController: ModalController, public navCtrl: NavController, public navParams: NavParams, public geolocation: Geolocation, private platform: Platform, public currentCoord: CurrentCoordProvider, public alertCtrl: AlertController) {
     this.platform.ready().then(() => {
         this.currentCoord.getCoord().then(locationResults => {
           this.myCoord = new google.maps.LatLng(locationResults.lat, locationResults.lng);
-          console.log(this.myCoord);
           this.setAddress(this.myCoord).then(results => {
             this.myStreet = results.myStreet;
             this.myCity = results.myCity;
@@ -89,6 +88,27 @@ export class ReportPage {
   setIssue(id, issue){
     console.log("ISSUE", issue);
     console.log("ID", id);
+    if (issue === "Other"){
+      this.showOtherPrompt().then(result =>{
+        if (result === "Save"){
+            issue = this.issues[this.issues.length-2];
+            this.editActiveIssue(id, issue);
+        }
+      });
+    }else{
+      this.editActiveIssue(id, issue);
+    }
+    // if(this.activeIssue.indexOf(issue)!=-1) {
+    //   //if exist remove it.
+    //   this.activeIssue.splice(this.activeIssue.indexOf(issue), 1);
+    // } else {
+    // //if don't add it.
+    //   this.activeIssue.push(issue);
+    // }
+    // console.log(this.activeIssue);
+  }
+
+  editActiveIssue(id, issue){
     if(this.activeIssue.indexOf(issue)!=-1) {
       //if exist remove it.
       this.activeIssue.splice(this.activeIssue.indexOf(issue), 1);
@@ -98,6 +118,42 @@ export class ReportPage {
     }
     console.log(this.activeIssue);
   }
+
+  showOtherPrompt(): Promise<any> {
+      return new Promise((resolve, result) => {
+        let prompt = this.alertCtrl.create({
+          title: 'Other',
+          message: "Enter a short phrase to categorize the issue",
+          inputs: [
+            {
+              name: 'Other',
+              placeholder: 'Hand Gestures'
+            },
+          ],
+          buttons: [
+            {
+              text: 'Cancel',
+              handler: data => {
+                console.log('Cancel clicked');
+                resolve("Cancel");
+              }
+            },
+            {
+              text: 'Save',
+              handler: data => {
+                console.log('Saved clicked');
+                this.issues[this.issues.length-1] = "Other: " + data.Other;
+                this.issues[this.issues.length] = "Other";
+                resolve("Save");
+              }
+            }
+          ]
+        });
+        prompt.present();
+      })
+
+ }
+
 
   submitReport(){
     let reportData = {
