@@ -26,17 +26,17 @@
         <ion-col col-8>
           <ion-card-content>
             <ion-item>
-              <ion-label style="opacity: 1"><ion-icon name="calendar"></ion-icon></ion-label>
+              <!-- <ion-label style="opacity: 1"><ion-icon name="calendar"></ion-icon></ion-label> -->
+              <ion-label style="opacity: 1"><i class="material-icons md-dark iconImg">event_note</i></ion-label>
               <ion-datetime disabled displayFormat="MMM. DD, YYYY" [(ngModel)]="reportData.date"></ion-datetime>
             </ion-item>
+
             <br>
-            <!-- <ion-item>
-              <ion-label><ion-icon name="time"></ion-icon></ion-label>
-              <ion-datetime disabled displayFormat="h:mm A" [(ngModel)]="reportData.time"></ion-datetime>
-            </ion-item> -->
+
             <ion-row>
               <ion-col col-4 style="text-align:center; font-size: 1.3em; padding-left: 0px">
-                <ion-label><ion-icon name="time"></ion-icon></ion-label>
+                <!-- <ion-label><ion-icon name="time"></ion-icon></ion-label> -->
+                <ion-label id="timeIcon"><i class="material-icons md-dark iconImg">access_time</i></ion-label>
               </ion-col>
               <ion-col col-6>
                 <ion-datetime disabled displayFormat="h:mm A" [(ngModel)]="reportData.time" style="padding-left:0px; font-size: 1.2em"></ion-datetime>

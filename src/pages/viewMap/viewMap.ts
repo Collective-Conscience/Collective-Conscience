@@ -24,7 +24,6 @@ export class ViewMapPage {
   }
 
   ionViewDidLoad() {
-    console.log(this.mapRef);
     this.loadMap();
  }
 
@@ -52,7 +51,6 @@ export class ViewMapPage {
     this.afDatabase.list('/addressMarkers').snapshotChanges()
     .subscribe(snapshots=>{
         snapshots.forEach(snapshot => {
-          console.log(snapshot.payload.val());
           let marker = new google.maps.Marker({
               map: this.map,
               animation: google.maps.Animation.DROP,

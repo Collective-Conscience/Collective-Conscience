@@ -26,15 +26,17 @@
         <ion-col col-8>
           <ion-card-content>
             <ion-item>
-                <ion-label><ion-icon name="calendar"></ion-icon></ion-label>
-                <ion-datetime displayFormat="MMM. DD, YYYY" [(ngModel)]="myDate"></ion-datetime>
+                <!-- <ion-label><ion-icon name="calendar"></ion-icon></ion-label> -->
+                <ion-label><i class="material-icons md-dark iconImg">event_note</i></ion-label>
+                <ion-datetime id="datePicker" displayFormat="MMM. DD, YYYY" [(ngModel)]="myDate"></ion-datetime>
                 <ion-icon name="md-create" class="whenEditIcon" item-right></ion-icon>
             </ion-item>
 
           <br>
 
               <ion-item>
-                  <ion-label><ion-icon name="time"></ion-icon></ion-label>
+                  <!-- <ion-label><ion-icon name="md-time"></ion-icon></ion-label> -->
+                  <ion-label id="timeIcon"><i class="material-icons md-dark iconImg">access_time</i></ion-label>
                   <ion-datetime displayFormat="h:mm A" [(ngModel)]="myTime" style="width: 80%; text-align: left; padding-left:10px;"></ion-datetime>
                   <ion-icon name="md-create" class="whenEditIcon" item-right></ion-icon>
             </ion-item>
