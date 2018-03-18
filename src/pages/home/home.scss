@@ -1,47 +1,47 @@
 page-home {
 
-        
+
     #mainContent {
         padding: 20px 20px;
     }
-    
+
     p {
       font-family: Roboto;
       text-align: center;
       font-size: 14px;
       line-height: normal;
     }
-    
+
     .bold {
-        font-weight: bold; 
+        font-weight: bold;
     }
-    
+
     #needsToStop{
         font-size: 18px;
     }
-    
+
     .boldRedLarge {
         font-weight: bold;
         color: #FF334C;
         font-size: 20px;
     }
-    
+
     #takeAStand {
         font-size: 16px;
         font-weight: bold;
         color: #3BB2D2;
     }
 
-    
-    
-    
+
+
+
     #title{
       text-align: center;
       font-weight: bold;
       font-family: "Roboto";
       font-size: 20px;
     }
-    
+
     #logo{
       margin-top: 8px;
       height: 70px;
@@ -78,6 +78,10 @@ page-home {
       object-fit: fill;
       height: 150px;
       width: 400px;
+    }
+
+    button{
+      background-color: #227D96 !important;
     }
 
 }
